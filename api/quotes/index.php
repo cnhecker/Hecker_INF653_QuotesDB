@@ -11,22 +11,22 @@ if ($method === 'OPTIONS') {
 
 if($method === 'GET'){
     if(isset($_GET['id'])){
-        require 'read_single.php';
+        require_once 'read_single.php';
     }
     else{
         
-        require 'read.php';
+        require_once 'read.php';
     }
 }
 
 if($method === 'POST'){
-    require 'create.php';
+    require_once 'create.php';
 }
 
 if($method === 'PUT'){
-    require 'update.php';
+    require_once 'update.php';
 }
 
 if($method === 'DELETE'){
-    require 'delete.php';
+    require_once 'delete.php';
 }
