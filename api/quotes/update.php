@@ -21,6 +21,19 @@ $data = json_decode(file_get_contents("php://input"));
 
 // Check if required fields exist in the database
 if (!empty($data->id) && !empty($data->quote) && !empty($data->author_id) && !empty($data->category_id)) {
+    // Validate if the quote_id exists
+    $validateQuery = "SELECT id FROM quotes WHERE id = :id LIMIT 1";
+    $validateStmt = $db->prepare($validateQuery);
+    $validateStmt->bindParam(':id', $data->id);
+    $validateStmt->execute();
+
+    if ($validateStmt->rowCount() === 0) {
+        echo json_encode(array(
+            'message' => 'No Quotes Found'
+        ));
+        exit;
+    }
+
     // Assign properties
     $quote->id = $data->id;
     $quote->quote = $data->quote;
@@ -34,11 +47,13 @@ if (!empty($data->id) && !empty($data->quote) && !empty($data->author_id) && !em
         ));
     } else {
         echo json_encode(array(
-            'message' => 'Quote Not Updated'));
+            'message' => 'Quote Not Updated'
+        ));
     }
 } else {
     // Incomplete data
     echo json_encode(array(
-        'message' => 'Missing Required Parameters'));
+        'message' => 'Missing Required Parameters'
+    ));
 }
 ?>
