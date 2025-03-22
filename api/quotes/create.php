@@ -41,7 +41,7 @@ if (!empty($data->quote) && !empty($data->author_id) && !empty($data->category_i
 
     if ($categoryStmt->rowCount() === 0) {
         echo json_encode(array(
-            'message' => 'category_id Not FOund'
+            'message' => 'category_id Not Found'
         ));
         exit;
     }
