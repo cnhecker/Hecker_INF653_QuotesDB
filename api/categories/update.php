@@ -46,9 +46,8 @@ $categories->category = htmlspecialchars(strip_tags($data->category));
 // Update Category
 if ($categories->update()) {
     echo json_encode(array(
-        'message' => 'updated category',
-        'id' => $categories->id,
-        'category' => $categories->category));
+        'message' => 'updated category (' . $categories->id . ', ' . $categories->category . ')'
+    ));
 } else {
     echo json_encode(array(
         'message' => 'Category Not Updated'));

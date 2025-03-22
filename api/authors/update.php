@@ -46,9 +46,8 @@ $authors->author = htmlspecialchars(strip_tags($data->author));
 // Update Author
 if ($authors->update()) {
     echo json_encode(array(
-        'message' => 'updated author',
-        'id' => $authors->id,
-        'author' => $authors->author));
+        'message' => 'updated author (' . $authors->id . ', ' . $authors->author . ')'
+    ));
 } else {
     echo json_encode(array(
         'message' => 'Author Not Updated'));

@@ -30,11 +30,7 @@ if (!empty($data->id) && !empty($data->quote) && !empty($data->author_id) && !em
     // Update the quote
     if ($quote->update()) {
         echo json_encode(array(
-            'message' => 'updated quote',
-            'id' => $quote->id,
-            'quote' => $quote->quote,
-            'author_id' => $quote->author_id,
-            'category_id' => $quote->category_id
+            'message' => 'updated quote (' . $quote->id . ', ' . $quotes->quote . ', ' . $quotes->author_id . ', ' . $quotes->category_id . ')'
         ));
     } else {
         echo json_encode(array(
