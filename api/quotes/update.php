@@ -34,6 +34,32 @@ if (!empty($data->id) && !empty($data->quote) && !empty($data->author_id) && !em
         exit;
     }
 
+     // Validate author_id exists
+    $authorQuery = "SELECT id FROM authors WHERE id = :author_id LIMIT 1";
+    $authorStmt = $db->prepare($authorQuery);
+    $authorStmt->bindParam(':author_id', $data->author_id);
+    $authorStmt->execute();
+
+    if ($authorStmt->rowCount() === 0) {
+        echo json_encode(array(
+            'message' => 'author_id Not Found'
+        ));
+        exit;
+    }
+
+     // Validate category_id exists
+    $categoryQuery = "SELECT id FROM categories WHERE id = :category_id LIMIT 1";
+    $categoryStmt = $db->prepare($categoryQuery);
+    $categoryStmt->bindParam(':category_id', $data->category_id);
+    $categoryStmt->execute();
+
+    if ($categoryStmt->rowCount() === 0) {
+        echo json_encode(array(
+            'message' => 'category_id Not Found'
+        ));
+        exit;
+    }
+
     // Assign properties
     $quote->id = $data->id;
     $quote->quote = $data->quote;
