@@ -2,10 +2,11 @@
 
 declare(strict_types = 1);
 
-echo '<pre>';
-print_r(getenv('https://hecker-inf653-quotesdb.onrender.com/'));
+echo '<h1>';
+// print_r(getenv('SITE_URL'));
+echo('quotesdb REST API');
 echo '<br>';
-print_r($_SERVER);
-echo '</pre>';
+// print_r($_SERVER);
+echo '</h1>';
 
-phpinfo();
+//phpinfo();
