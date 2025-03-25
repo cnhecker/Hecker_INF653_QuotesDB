@@ -56,7 +56,10 @@ if (!empty($data->quote) && !empty($data->author_id) && !empty($data->category_i
         // Fetch the last inserted ID
         $lastInsertedId = $db->lastInsertId();
         echo json_encode(array(
-            'message' => 'created quote (' . $lastInsertedId . ', ' . $quotes->quote . ', ' . $quotes->author_id . ', ' . $quotes->category_id . ')'
+            'id' => $lastInsertedId,
+            'quote' => $quotes->quote,
+            'author_id' => $quotes->author_id,
+            'category_id' => $quotes->category_id
         ));
     } else {
         echo json_encode(array(

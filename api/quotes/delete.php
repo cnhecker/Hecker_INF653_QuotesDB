@@ -38,7 +38,7 @@ $stmt->bindParam(':id', $quotes->id);
 // Execute the query
 if ($stmt->execute() && $stmt->rowCount() > 0) {
     echo json_encode(array(
-        'deleted quote id' => $quotes->id));
+        'id' => $quotes->id));
 } else {
     echo json_encode(array(
         'message' => 'No Quotes Found'));
