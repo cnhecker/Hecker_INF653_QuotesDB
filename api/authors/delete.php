@@ -38,7 +38,7 @@ $stmt->bindParam(':id', $authors->id);
 // Execute the query
 if ($stmt->execute() && $stmt->rowCount() > 0) {
     echo json_encode(array(
-        'deleted author_id' => $authors->id));
+        'id' => $authors->id));
 } else {
     echo json_encode(array(
         'message' => 'author_id Not Found'));

@@ -38,7 +38,7 @@ $stmt->bindParam(':id', $categories->id);
 // Execute the query
 if ($stmt->execute() && $stmt->rowCount() > 0) {
     echo json_encode(array(
-        'deleted category_id' => $categories->id));
+        'id' => $categories->id));
 } else {
     echo json_encode(array(
         'message' => 'category_id Not Found'));
