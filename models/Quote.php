@@ -19,12 +19,14 @@
     public function read() {
       // Create query
       $query = 'SELECT 
-        id, 
+        public.quotes.id, 
         quote, 
-        author_id, 
-        category_id 
+        a.author,
+        c.category 
       FROM 
         ' . $this->table . ' 
+        JOIN authors a on a.id = author_id
+        JOIN categories c on c.id = category_id
       ORDER BY 
         id ASC';
 
@@ -40,13 +42,15 @@
     public function read_single() {
       // Create query
       $query = 'SELECT 
-        id, 
+        quotes.id, 
         quote, 
-        author_id, 
-        category_id 
+        a.author,
+        c.category 
       FROM 
         ' . $this->table . ' 
-      WHERE id = :id 
+        JOIN authors a on a.id = author_id
+        JOIN categories c on c.id = category_id
+      WHERE quotes.id = :id 
       LIMIT 1';
 
       // Prepare statement
@@ -75,12 +79,14 @@
     public function read_by_category() {
       // Create query
       $query = 'SELECT 
-        id, 
+        public.quotes.id, 
         quote, 
-        author_id, 
-        category_id 
+        a.author,
+        c.category 
       FROM 
         ' . $this->table . ' 
+        JOIN authors a on a.id = author_id
+        JOIN categories c on c.id = category_id
       WHERE 
         category_id = :category_id';
 
@@ -123,12 +129,14 @@
     public function read_by_author_and_category() {
       // Create query
       $query = 'SELECT 
-        id, 
+        public.quotes.id, 
         quote, 
-        author_id, 
-        category_id 
+        a.author, 
+        c.category
       FROM 
         ' . $this->table . ' 
+      JOIN authors a on a.id = author_id
+      JOIN categories c on c.id = category_id
       WHERE 
         author_id = :author_id AND category_id = :category_id';
 

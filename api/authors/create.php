@@ -30,7 +30,8 @@
   // // Create Author
     if($authors->create()){
       echo json_encode(array(
-        'message' => 'created author (' . $authors->id . ', ' . $authors->author . ')'));
+        'id' => $authors->id, 
+        'author' => $authors->author));
     } else{
       echo json_encode(array(
         'message' => 'Author Not Updated'));

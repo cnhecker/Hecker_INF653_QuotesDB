@@ -24,7 +24,6 @@ $num = $result->rowCount();
 if($num > 0) {
     // Cat array
     $cat_arr = array();
-    $cat_arr['data'] = array();
 
     while($row = $result->fetch(PDO::FETCH_ASSOC)) {
       extract($row);
@@ -35,7 +34,7 @@ if($num > 0) {
       );
 
       // Push to "data"
-      array_push($cat_arr['data'], $cat_item);
+      array_push($cat_arr, $cat_item);
     }
 
     // Turn to JSON & output
