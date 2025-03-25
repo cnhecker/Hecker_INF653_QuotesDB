@@ -23,8 +23,8 @@ if ($quote->read_single()) {
     $quote_arr = array(
         'id' => $quote->id,
         'quote' => $quote->quote,
-        'author_id' => $quote->author_id,
-        'category_id' => $quote->category_id
+        'author' => $quote->author_id,
+        'category' => $quote->category_id
     );
 
     // Convert to JSON & output
@@ -32,7 +32,7 @@ if ($quote->read_single()) {
 } else {
     // Return if quote not found
     echo json_encode(array(
-        'message' => 'No Quote Found')
+        'message' => 'No Quotes Found')
     );
 }
 ?>

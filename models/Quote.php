@@ -67,8 +67,8 @@
       if ($row) {
         $this->id = $row['id'];
         $this->quote = $row['quote'];
-        $this->author_id = $row['author_id'];
-        $this->category_id = $row['category_id'];
+        $this->author_id = $row['author'];
+        $this->category_id = $row['category'];
         return true;
       } else {
         return false;
@@ -105,12 +105,14 @@
     public function read_by_author() {
       // Create query
       $query = 'SELECT 
-        id, 
+        public.quotes.id, 
         quote, 
-        author_id, 
-        category_id 
+        a.author,
+        c.category 
       FROM 
         ' . $this->table . ' 
+        JOIN authors a on a.id = author_id
+        JOIN categories c on c.id = category_id
       WHERE 
         author_id = :author_id';
 
