@@ -45,8 +45,8 @@ if (!empty($data->id) && !empty($data->quote) && !empty($data->author_id) && !em
         echo json_encode(array(
             'id' => $quote->id,
             'quote' => $quote->quote,
-            'author' => $quote->author_id,
-            'category' => $quote->category_id
+            'author_id' => $quote->author_id,
+            'category_id' => $quote->category_id
         ));
     } else {
         echo json_encode(array(
